@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Flash Flood Hazard Map</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link rel="stylesheet" href="index.css">
+
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Flash Flood Hazard Map</h1>
+</div>
+
+<div class="container-fluid" style="margin-top:30px;margin-bottom: 30px;">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card" >
+        <div class="card-header">
+          <span style="color:#ffffff;font-weight:bold">Flash Flood Legend</span>
+        </div>
+        <div class="card-body">
+          <div class="row center">
+            <div class="col-sm-12" style="background-color:red;">
+              <p style="margin-top: 23px;">HIGH</p>
+            </div>
+          </div>
+          <div class="row center">
+            <div class="col-sm-12" style="background-color:orange;">
+              <p>MEDIUM</p>
+            </div>
+          </div>
+           <div class="row center">
+            <div class="col-sm-12" style="background-color:yellow;">
+              <p>LOW</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="d-sm-none">
+      <div class="m-t-50"></div>
+       <div class="card" >
+        <div class="card-header">
+          <span style="color:#ffffff;font-weight:bold">Flash Flood Hazard Selection</span>
+        </div>
+        <div class="card-body">
+          <div class="row center">
+            <div class="form-check">
+              <label class="form-check-label" for="check1">
+                <input type="checkbox" class="form-check-input hazardIndicator" id="red" name="option1" value="Red">RED
+              </label>
+            </div>
+          </div>
+          <div class="row center">
+            <div class="form-check">
+              <label class="form-check-label" for="check1">
+                <input type="checkbox" class="form-check-input hazardIndicator" id="orange" name="option1" value="Orange">ORANGE
+              </label>
+            </div>
+          </div>
+            <div class="form-check">
+              <label class="form-check-label" for="check1">
+                <input type="checkbox" class="form-check-input hazardIndicator" id="yellow" name="option1" value="Yellow">YELLOW
+              </label>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="card" >
+        <div class="card-header">
+          <span style="color:#ffffff;font-weight:bold"><i class='fas fa-globe-asia' style='font-size:24px'></i> MAP</span>
+        </div>
+        <div class="card-body fixed-height">
+          <div class="row center">
+            <div class="col-sm-12">
+              <div id="map"></div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('document').ready(function(){
+    
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: {lat: 14.599512, lng: 120.984222 }
+    });
+
+    var hideMarkerRed = [];
+    var hideMarkerYellow = [];
+    var hideMarkerOrange = [];
+    function hideRed(category) {
+      hideMarkerRed[0].setVisible(false);
+      hideMarkerRed[1].setVisible(false);
+      hideMarkerRed[2].setVisible(false);
+    }
+    function hideOrange(category) {
+      hideMarkerOrange[0].setVisible(false);
+      hideMarkerOrange[1].setVisible(false);
+      hideMarkerOrange[2].setVisible(false);
+    }
+     function hideYellow(category) {
+      hideMarkerYellow[0].setVisible(false);
+    }
+    $('.hazardIndicator').click(function(){
+      var cat = $(this).attr("value");
+      if($(this).is(":checked")) {
+        // alert($(this).val()); 
+        if($(this).val() == 'Red'){
+          // lat lng of Pasig City
+          var marker = new google.maps.Marker({
+            position: {
+                  lat: 14.58691,
+                  lng: 121.0614,
+                },
+            map: map,
+            icon: 'images/red.png'
+          }); 
+          //Malabon
+          var marker2 = new google.maps.Marker({
+            position: {
+                  lat: 14.6625,
+                  lng: 120.956667,
+                },
+            map: map,
+            icon: 'images/red.png'
+          });
+          //Navotas
+          var marker3 = new google.maps.Marker({
+            position: {
+                  lat: 14.6715,
+                  lng: 120.9398,
+                },
+            map: map,
+            icon: 'images/red.png'
+          });
+          hideMarkerRed.push(marker);  
+          hideMarkerRed.push(marker2);  
+          hideMarkerRed.push(marker3); 
+        }else if($(this).val() == 'Orange'){
+          //lat lng of Marikina
+          var marker = new google.maps.Marker({
+            position: {
+                  lat: 14.6507,
+                  lng: 121.1029
+                },
+            map: map,
+            icon: 'images/orange.png'
+          });   
+          hideMarkerOrange.push(marker);  
+          //lat lng of Caloocan
+          var marker2 = new google.maps.Marker({
+            position: {
+                  lat: 14.6499974,
+                  lng: 120.9666628
+                },
+            map: map,
+            icon: 'images/orange.png'
+          });   
+          //lat lng of Las Pinas
+          var marker3 = new google.maps.Marker({
+            position: {
+                  lat: 14.4445,
+                  lng: 120.9939
+                },
+            map: map,
+            icon: 'images/orange.png'
+          });   
+          hideMarkerOrange.push(marker);  
+          hideMarkerOrange.push(marker2);  
+          hideMarkerOrange.push(marker3); 
+        }else{
+          //lat lng of Mandaluyong
+          var marker = new google.maps.Marker({
+            position: {
+                  lat: 14.5832,
+                  lng: 121.0409
+                },
+            map: map,
+            icon: 'images/yellow.png'
+          });  
+          hideMarkerYellow.push(marker);   
+        }
+       
+      }else{
+        if($(this).val() == 'Red'){
+          hideRed(cat)
+          hideMarkerRed = [];
+        }else if($(this).val() == 'Orange'){
+          hideOrange(cat)
+          hideMarkerOrange = [];
+        }else{
+          hideYellow(cat)
+          hideMarkerYellow = []; 
+        }
+         
+      }  
+    })
+  })
+  
+</script>
+
+ <script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxd7gEmZwxibqFMveVC8VUW_Azt-zoLzE">
+</script>
+
+</body>
+</html>
