@@ -99,7 +99,7 @@
   $('document').ready(function(){
     
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
+      zoom: 11,
       center: {lat: 14.599512, lng: 120.984222 }
     });
 
@@ -110,14 +110,17 @@
       hideMarkerRed[0].setVisible(false);
       hideMarkerRed[1].setVisible(false);
       hideMarkerRed[2].setVisible(false);
+      hideMarkerRed[3].setVisible(false);
     }
     function hideOrange(category) {
       hideMarkerOrange[0].setVisible(false);
       hideMarkerOrange[1].setVisible(false);
       hideMarkerOrange[2].setVisible(false);
+      hideMarkerOrange[3].setVisible(false);
     }
      function hideYellow(category) {
       hideMarkerYellow[0].setVisible(false);
+      hideMarkerYellow[1].setVisible(false);
     }
     $('.hazardIndicator').click(function(){
       var cat = $(this).attr("value");
@@ -151,9 +154,19 @@
             map: map,
             icon: 'images/red.png'
           });
+          //Brgy. Santolan, Pasig City
+          var marker4 = new google.maps.Marker({
+            position: {
+                  lat: 14.622143,
+                  lng: 121.085944,
+                },
+            map: map,
+            icon: 'images/red.png'
+          });
           hideMarkerRed.push(marker);  
           hideMarkerRed.push(marker2);  
           hideMarkerRed.push(marker3); 
+          hideMarkerRed.push(marker4); 
         }else if($(this).val() == 'Orange'){
           //lat lng of Marikina
           var marker = new google.maps.Marker({
@@ -182,10 +195,20 @@
                 },
             map: map,
             icon: 'images/orange.png'
-          });   
+          });  
+          //Diliman, Quezon City
+          var marker4 = new google.maps.Marker({
+            position: {
+                  lat: 14.648282,
+                  lng: 121.049850,
+                },
+            map: map,
+            icon: 'images/orange.png'
+          }); 
           hideMarkerOrange.push(marker);  
           hideMarkerOrange.push(marker2);  
           hideMarkerOrange.push(marker3); 
+          hideMarkerOrange.push(marker4);
         }else{
           //lat lng of Mandaluyong
           var marker = new google.maps.Marker({
@@ -196,7 +219,17 @@
             map: map,
             icon: 'images/yellow.png'
           });  
+          //Kaagapay Road, Caloocan City North
+          var marker2 = new google.maps.Marker({
+            position: {
+                  lat: 14.773561,
+                  lng: 121.063769,
+                },
+            map: map,
+            icon: 'images/yellow.png'
+          }); 
           hideMarkerYellow.push(marker);   
+          hideMarkerYellow.push(marker2);  
         }
        
       }else{
