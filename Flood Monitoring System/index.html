@@ -99,8 +99,8 @@
   $('document').ready(function(){
     
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 11,
-      center: {lat: 14.599512, lng: 120.984222 }
+      zoom: 14,
+      center: {lat: 14.5995, lng: 120.9842 }
     });
 
     var hideMarkerRed = [];
@@ -127,38 +127,38 @@
       if($(this).is(":checked")) {
         // alert($(this).val()); 
         if($(this).val() == 'Red'){
-          // lat lng of Pasig City
+          // lat lng of Intramuros
           var marker = new google.maps.Marker({
             position: {
-                  lat: 14.58691,
-                  lng: 121.0614,
+                  lat: 14.587830982 ,
+                  lng: 120.97166278,
                 },
             map: map,
             icon: 'images/red.png'
           }); 
-          //Malabon
+          //Ermita
           var marker2 = new google.maps.Marker({
             position: {
-                  lat: 14.6625,
-                  lng: 120.956667,
+                  lat: 14.583,
+                  lng: 120.983,
                 },
             map: map,
             icon: 'images/red.png'
           });
-          //Navotas
+          //UST
           var marker3 = new google.maps.Marker({
             position: {
-                  lat: 14.6715,
-                  lng: 120.9398,
+                  lat: 14.605914243 ,
+                  lng: 120.986912719,
                 },
             map: map,
             icon: 'images/red.png'
           });
-          //Brgy. Santolan, Pasig City
+          //Sampaloc Manila
           var marker4 = new google.maps.Marker({
             position: {
-                  lat: 14.622143,
-                  lng: 121.085944,
+                  lat: 14.60800 ,
+                  lng: 120.99100,
                 },
             map: map,
             icon: 'images/red.png'
@@ -168,39 +168,39 @@
           hideMarkerRed.push(marker3); 
           hideMarkerRed.push(marker4); 
         }else if($(this).val() == 'Orange'){
-          //lat lng of Marikina
+          //lat lng of Santa Cruz Manila
           var marker = new google.maps.Marker({
             position: {
-                  lat: 14.6507,
-                  lng: 121.1029
+                  lat: 14.617570,
+                  lng: 120.984764
                 },
             map: map,
             icon: 'images/orange.png'
           });   
           hideMarkerOrange.push(marker);  
-          //lat lng of Caloocan
+          //lat lng of Brgy 520 Manila
           var marker2 = new google.maps.Marker({
             position: {
-                  lat: 14.6499974,
-                  lng: 120.9666628
+                  lat: 14.6179,
+                  lng: 120.9930
                 },
             map: map,
             icon: 'images/orange.png'
           });   
-          //lat lng of Las Pinas
+          //lat lng of Tondo Manila
           var marker3 = new google.maps.Marker({
             position: {
-                  lat: 14.4445,
-                  lng: 120.9939
+                  lat: 14.617,
+                  lng: 120.967
                 },
             map: map,
             icon: 'images/orange.png'
           });  
-          //Diliman, Quezon City
+          //Baseco Compound, Manila
           var marker4 = new google.maps.Marker({
             position: {
-                  lat: 14.648282,
-                  lng: 121.049850,
+                  lat: 14.5895,
+                  lng: 120.9575,
                 },
             map: map,
             icon: 'images/orange.png'
@@ -210,20 +210,20 @@
           hideMarkerOrange.push(marker3); 
           hideMarkerOrange.push(marker4);
         }else{
-          //lat lng of Mandaluyong
+          //lat lng of Santa Ana
           var marker = new google.maps.Marker({
             position: {
-                  lat: 14.5832,
-                  lng: 121.0409
+                  lat: 14.5826,
+                  lng: 121.0134
                 },
             map: map,
             icon: 'images/yellow.png'
           });  
-          //Kaagapay Road, Caloocan City North
+          //Santa Mesa, Manila
           var marker2 = new google.maps.Marker({
             position: {
-                  lat: 14.773561,
-                  lng: 121.063769,
+                  lat: 14.5976,
+                  lng: 121.0176,
                 },
             map: map,
             icon: 'images/yellow.png'
